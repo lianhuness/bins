@@ -11,6 +11,8 @@ from bs4 import BeautifulSoup as BS
 from requests import session
 import requests
 import os
+import os
+
 
 DIR = "bttang"
 if not os.path.exists(DIR):
@@ -28,6 +30,7 @@ lists = lists[1::2]
 
 #lists = [urljoin(MAIN_URL, x.attrs['href']) for x in hotlist.find_all('a')]
 
+message = ""
 
 cnt = 0
 for link in lists:
@@ -41,6 +44,8 @@ for link in lists:
 	if os.path.exists(filename):
 		print("******** %s exist, skip ** " % filename )
 		continue
+
+	message += title +"\n"
 
 	res = s.get(url)
 	html = BS(res.text, from_encoding="utf-8")
@@ -83,9 +88,8 @@ for link in lists:
 	with open(filename, 'wb') as file:
 		file.write(req.content)
 
-
-
-
+if len(message) > 0:
+	os.system("echo '%s' " % message.encode('utf-8').strip())
 	
 
 
