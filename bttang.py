@@ -11,12 +11,13 @@ from bs4 import BeautifulSoup as BS
 from requests import session
 import requests
 import os
-import os
+import getpass
 
 
-DIR = "bttang"
+DIR = "/home/%s/DATA/bttang"%getpass.getuser()
 if not os.path.exists(DIR):
-			os.makedirs(DIR)
+	os.makedirs(DIR)
+pdb.set_trace()
 
 MAIN_URL = "http://www.bttiantang.com"
 
