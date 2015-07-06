@@ -89,7 +89,7 @@ for link in lists:
 		file.write(req.content)
 
 if len(message) > 0:
-	os.system("echo '%s' " % message.encode('utf-8').strip())
+	os.system("echo '%s' | mail -s 'my ip' yiqi.zhu888@gmail.com" % message.encode('utf-8').strip())
 	
 
 
