@@ -17,7 +17,7 @@ import getpass
 DIR = "/home/%s/DATA/bttang"%getpass.getuser()
 if not os.path.exists(DIR):
 	os.makedirs(DIR)
-pdb.set_trace()
+
 
 MAIN_URL = "http://www.bttiantang.com"
 
