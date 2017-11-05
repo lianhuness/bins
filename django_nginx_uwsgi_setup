@@ -1,0 +1,9 @@
+nginx 
+uwsgi 
+
+/etc/nginx/sites_enabled/default
+
+ps -ef | grep uwsgi 
+uwsgi -x uwsgi_socket.xml 
+
+
