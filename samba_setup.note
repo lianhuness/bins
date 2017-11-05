@@ -1,0 +1,15 @@
+# Add user into samba user 
+sudo smbpasswd -a pi
+
+# Edit /etc/samba/smb/conf 
+
+[public]
+path = /mnt/hdd
+#public=yes
+security=user
+writable=yes
+printable=no
+
+
+# Restart 
+sudo /etc/init.d/samba restart 
