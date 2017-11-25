@@ -1,0 +1,18 @@
+######
+Add the Transmission user to the pi group which will prevent permission issues as long as you download to hard drives that are owned by the pi group (if you follow my hard drive mounting tutorial then it will work).
+###### 
+
+sudo usermod -a -G pi transmission-daemon
+
+##### 
+You may have a different transmission group, then run this command
+#####
+
+sudo usermod -a -G pi debian-transmission
+
+#####
+set umask to 002 so new files have the right permissions in the download folder
+##### 
+
+"umask": 002,
+
