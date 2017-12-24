@@ -16,3 +16,21 @@ set umask to 002 so new files have the right permissions in the download folder
 
 "umask": 002,
 
+
+将用户 pi 加入到组，赋予权限
+
+sudo usermod -a -G debian-transmission pi
+修改配置 sudo vim /etc/transmission-daemon/settings.json
+
+将里面 "umask": 18, 的18改成0 --不然后面会出现下一下就Permission denied的权限问题
+
+常用的修改
+
+| name | value | info |------|-------|------------------------------------------------------- |unask | 0 | 修改权限，18 to 0 |rpc-authentication-required | true | --远程管理认证需要:是 |rpc-enabled | true | -- 远程管理功能打开 |rpc-password | "username"| --远程管理的账号(自定义输入)) ] |rpc-username | "password"| --远程管理的密码(自定义输入) , 明文修改，自动加密 |rpc-whitelist | "*.*.*.*"| --白名单IP,全部改为 * |rpc-whitelist-enabled | false |--使用白名单:否 |download-dir | "/mount/usb/dir" | 默认下载地址 |incomplete-dir | "/mount/usb/dir2 " | 结束后转移文件的地址 |incomplete-dir-enabled | true/false | 是否使用 incomplete-dir
+
+其他的配置可按照需求,自行修改.
+
+修改好配置后可以对 transmission-daemon 进行start/stop/restart操作
+
+sudo service transmission-daemon start 
+在浏览器中访问'http://Your-IP:9091/' 开始使用bt下载机
