@@ -1,5 +1,9 @@
 nginx 
+    install:  apt-get install nginx 
 uwsgi 
+    install apt-get install uwsgi uwsgi-plugin-python 
+
+which uwsgi  /usr/bin/uwsgi 
 
 /etc/nginx/sites_enabled/default
 
