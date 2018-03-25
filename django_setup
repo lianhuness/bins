@@ -3,3 +3,55 @@ sudo apt-get install libfreetype6-dev zlib1g-dev
 pip install django 
 apt-get install python-dev
 pip install Pillow  libjpeg-dev
+
+
+
+
+**** fix migrations ***** 
+
+scenario 1:  Remove all migrations files within project and **DELETE database** 
+
+1. find . -path "*/migrations/*.py" -not -name "__init__
+       find . -path "*/migrations/*.pyc"  -delete
+2. Drop the database, or delete  db.sqlite3 
+3. python manage.py makemigrations 
+   python manage.py migrate 
+
+
+
+
+SCENARIO 2:  remove migration history but KEEP THE DATA 
+
+1. Clear the migration history for *EACH APP* 
+    run "python manage.py show migrations"  
+    check history 
+2. Clear migration history.  
+    python manage.py migration --fake **APP_NAME** zero 
+
+ Operations to perform:
+         Unapply all migrations: core
+       Running migrations:
+         Rendering model states... DONE
+         Unapplying core.0003_mymodel_bio... FAKED
+         Unapplying core.0002_remove_mymodel_i... FAKED
+         Unapplying core.0001_initial... FAKED
+3. OUTPUT would be 
+
+    core
+        [ ] 0001_initial
+
+4. Remove the actual migrations files 
+    find . -path "*/migrations/*.py" -not -name "__init__
+       find . -path "*/migrations/*.pyc"  -delete
+5. python manage.py showmigrations
+
+    core
+    (no migrations)
+
+6. Create initial migrations 
+    python manage.py makemigrations
+
+7  python manage.py migrate --fake-initial
+
+
+**** ALL SET **** 
