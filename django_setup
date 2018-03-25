@@ -1,0 +1,5 @@
+python get_pip.py
+sudo apt-get install libfreetype6-dev zlib1g-dev
+pip install django 
+apt-get install python-dev
+pip install Pillow  libjpeg-dev
