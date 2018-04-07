@@ -104,7 +104,7 @@ fi
 
 
 alias ..='cd ..'
-alias ll='ls -ltra'
+alias ll='ls -ltr'
 
 export PATH=$PATH:~/.composer/vendor/bin:/home/pi/workspace/bins
 
